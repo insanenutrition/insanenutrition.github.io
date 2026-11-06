@@ -1,4 +1,4 @@
-theme: neo-brutalism
+theme: insane-gothic
 lang: "es"
 color_scheme: dark
 
@@ -8,34 +8,34 @@ google_analytics_id:
 
 title: "Insane Nutrition"
 avatar: "./images/profile.jpeg"
-name: "@insanenutritionperu"
-tagline: "Suplementos para entrenar en serio 💪 · Envíos a todo el Perú 🇵🇪"
+name: "@insanenutrition.pe"
+tagline: "Suplementos para entrenar en serio. Envíos a todo el Perú."
 
 links:
   - link:
       icon: "fa-solid fa-store"
-      text: "Compra en nuestra tienda online"
-      url: "https://1fg6g1-nh.myshopify.com"
+      text: "Compra en nuestra tienda"
+      url: "https://www.insane-nutrition.com/"
       title: "Tienda online"
       alt: "Tienda online de Insane Nutrition"
       target: "_blank"
   - link:
       icon: "fa-brands fa-whatsapp"
-      text: "Haz tu pedido por WhatsApp"
+      text: "Pedidos por WhatsApp"
       url: "https://wa.me/51942251060?text=Hola%20Insane%20Nutrition,%20quiero%20hacer%20un%20pedido"
       title: "WhatsApp"
       alt: "Pedidos por WhatsApp"
       target: "_blank"
   - link:
       icon: "fa-brands fa-instagram"
-      text: "Síguenos en Instagram"
-      url: "https://www.instagram.com/insanenutritionperu/"
+      text: "Instagram"
+      url: "https://www.instagram.com/insanenutrition.pe/"
       title: "Instagram"
       alt: "Instagram de Insane Nutrition"
       target: "_blank"
   - link:
       icon: "fa-brands fa-tiktok"
-      text: "Míranos en TikTok"
+      text: "TikTok"
       url: "https://www.tiktok.com/@insanenutritionpe"
       title: "TikTok"
       alt: "TikTok de Insane Nutrition"
@@ -50,7 +50,7 @@ socials:
       target: "_blank"
   - social:
       icon: "fa-brands fa-instagram"
-      url: "https://www.instagram.com/insanenutritionperu/"
+      url: "https://www.instagram.com/insanenutrition.pe/"
       title: "Instagram"
       alt: "Instagram de Insane Nutrition"
       target: "_blank"
