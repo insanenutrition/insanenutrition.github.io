@@ -1,0 +1,331 @@
+/* insane-gothic — linkyee theme for Insane Nutrition
+   Dark-first: black iron, chrome silver, blood red. Signature move: cut-corner
+   "plates" with a silver edge, like armor or weight plates. The light variant
+   (only used with color_scheme: light, or auto on a light system) translates
+   it to bone parchment with iron ink. */
+
+:root {
+  --bg: #0b0b0c;
+  --bg-glow: rgba(178, 18, 28, 0.30);
+  --fg: #ecebea;
+  --muted: #a8a29f;
+  --plate: #151416;
+  --plate-hover: #1d1a1c;
+  --edge: linear-gradient(135deg, #d9dce0 0%, #5d6168 40%, #2a2b2f 60%, #b9bdc3 100%);
+  --edge-hover: linear-gradient(135deg, #ff5a5f 0%, #b2121c 50%, #ff5a5f 100%);
+  --accent: #b2121c;
+  --accent-bright: #ef4b50;
+  --on-accent: #ffffff;
+  --chrome: linear-gradient(180deg, #ffffff 0%, #d7dadf 34%, #7b8088 50%, #eef0f2 66%, #a3a8ae 100%);
+  --chrome-shadow: rgba(0, 0, 0, 0.9);
+  --ring: linear-gradient(160deg, #f2f3f5 0%, #6b7078 45%, #2a2b2f 60%, #c9ccd1 100%);
+  --cut: 14px;
+  --display: 'Metal Mania', 'Grenze Gotisch', 'Times New Roman', serif;
+  --condensed: 'Barlow Condensed', 'Oswald', 'Arial Narrow', sans-serif;
+  --body: 'Barlow', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --language-switcher-bg: var(--plate);
+  --language-switcher-fg: var(--fg);
+  --language-switcher-border: #3a3a3f;
+  --language-switcher-hover: var(--plate-hover);
+  --language-switcher-active-bg: var(--accent);
+  --language-switcher-active-fg: var(--on-accent);
+  --language-switcher-focus: var(--accent-bright);
+  --language-switcher-shadow: none;
+}
+
+/* Light ("bone & iron"): auto on a light system, or forced with color_scheme: light */
+@media (prefers-color-scheme: light) {
+  :root:not(.scheme-dark) {
+    --bg: #e9e4da;
+    --bg-glow: rgba(143, 17, 24, 0.14);
+    --fg: #161314;
+    --muted: #574f4c;
+    --plate: #f5f1ea;
+    --plate-hover: #fbf8f3;
+    --edge: linear-gradient(135deg, #2b2b2f 0%, #8a8580 45%, #4a4747 60%, #1d1d20 100%);
+    --edge-hover: linear-gradient(135deg, #8f1118 0%, #c0262d 50%, #8f1118 100%);
+    --accent: #8f1118;
+    --accent-bright: #8f1118;
+    --chrome: linear-gradient(180deg, #3a3a3e 0%, #121214 45%, #55555a 65%, #1a1a1c 100%);
+    --chrome-shadow: rgba(255, 255, 255, 0.6);
+    --ring: linear-gradient(160deg, #1d1d20 0%, #8a8580 50%, #1d1d20 100%);
+    --language-switcher-border: #b5ada4;
+  }
+}
+:root.scheme-light {
+  --bg: #e9e4da;
+  --bg-glow: rgba(143, 17, 24, 0.14);
+  --fg: #161314;
+  --muted: #574f4c;
+  --plate: #f5f1ea;
+  --plate-hover: #fbf8f3;
+  --edge: linear-gradient(135deg, #2b2b2f 0%, #8a8580 45%, #4a4747 60%, #1d1d20 100%);
+  --edge-hover: linear-gradient(135deg, #8f1118 0%, #c0262d 50%, #8f1118 100%);
+  --accent: #8f1118;
+  --accent-bright: #8f1118;
+  --chrome: linear-gradient(180deg, #3a3a3e 0%, #121214 45%, #55555a 65%, #1a1a1c 100%);
+  --chrome-shadow: rgba(255, 255, 255, 0.6);
+  --ring: linear-gradient(160deg, #1d1d20 0%, #8a8580 50%, #1d1d20 100%);
+  --language-switcher-border: #b5ada4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; background: var(--bg); }
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background:
+    radial-gradient(ellipse 90% 45% at 50% -8%, var(--bg-glow), transparent 70%),
+    var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  display: flex;
+  justify-content: center;
+  padding:
+    max(36px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right))
+    max(32px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: 100%;
+  max-width: 520px;
+}
+
+/* ---------- Profile ---------- */
+
+.profile { text-align: center; }
+
+.avatar-ring {
+  width: clamp(136px, 40vw, 188px);
+  aspect-ratio: 1;
+  margin: 0 auto 22px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--ring);
+  box-shadow: 0 0 0 6px var(--bg), 0 0 48px 6px var(--bg-glow);
+}
+
+.profile-pic {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #222;
+}
+
+.brand {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 10.5vw, 3.3rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  background: var(--chrome);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 0 var(--chrome-shadow));
+  text-wrap: balance;
+}
+
+.handle {
+  margin-top: 10px;
+  font-family: var(--condensed);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+}
+
+.description {
+  margin: 14px auto 0;
+  max-width: 34ch;
+  font-size: 16px;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.ornament {
+  display: block;
+  width: min(240px, 70%);
+  height: auto;
+  margin: 28px auto;
+  color: var(--muted);
+}
+.ornament-core { fill: var(--accent-bright); }
+
+/* ---------- Link plates ---------- */
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link-button {
+  --c: var(--cut);
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 28px 1fr 20px;
+  align-items: center;
+  gap: 14px;
+  min-height: 60px;
+  padding: 16px 20px;
+  background: var(--edge);
+  clip-path: polygon(var(--c) 0, 100% 0, 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, 0 100%, 0 var(--c));
+  font-family: var(--condensed);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg);
+  transition: transform 0.16s ease;
+}
+
+/* inner plate, inset 1px so the gradient behind reads as a metal edge */
+.link-button::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: var(--plate);
+  clip-path: polygon(calc(var(--c) - 0.4px) 0, 100% 0, 100% calc(100% - var(--c) + 0.4px), calc(100% - var(--c) + 0.4px) 100%, 0 100%, 0 calc(var(--c) - 0.4px));
+  transition: background 0.16s ease, inset 0.16s ease;
+}
+
+.link-button:hover,
+.link-button:focus-visible {
+  background: var(--edge-hover);
+  outline: none;
+}
+.link-button:hover::before { background: var(--plate-hover); }
+/* clip-path would hide an outline, so focus thickens the red edge instead */
+.link-button:focus-visible::before { inset: 3px; background: var(--plate-hover); }
+.link-button:active { transform: translateY(1px); }
+
+.link-icon {
+  display: inline-flex;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--accent-bright);
+}
+
+.link-text { min-width: 0; overflow-wrap: anywhere; line-height: 1.2; }
+.link-button-text { color: var(--muted); font-size: 14px; margin-left: 6px; letter-spacing: 0.04em; }
+
+.link-arrow {
+  display: inline-flex;
+  justify-content: flex-end;
+  color: var(--muted);
+  transition: transform 0.16s ease, color 0.16s ease;
+}
+.link-button:hover .link-arrow,
+.link-button:focus-visible .link-arrow { color: var(--fg); transform: translateX(4px); }
+
+/* First link = main call to action (the store): solid blood-red plate */
+.link-primary { color: var(--on-accent); min-height: 66px; font-size: 19px; }
+.link-primary::before { background: linear-gradient(180deg, #c3161f 0%, #8d0d15 100%); }
+.link-primary:hover::before { background: linear-gradient(180deg, #d41b25 0%, #9c111a 100%); }
+.link-primary:focus-visible::before { background: linear-gradient(180deg, #d41b25 0%, #9c111a 100%); }
+.link-primary:hover,
+.link-primary:focus-visible { background: linear-gradient(135deg, #ffffff 0%, #c9ccd1 50%, #ffffff 100%); }
+.link-primary .link-icon,
+.link-primary .link-arrow,
+.link-primary .link-button-text { color: rgba(255, 255, 255, 0.92); }
+
+/* "Latest" variant (only used with feed plugins) */
+.link-button.link-latest { grid-template-columns: auto 28px 1fr 20px; }
+.link-latest-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 3px 7px;
+  background: var(--accent);
+  color: var(--on-accent);
+  white-space: nowrap;
+}
+.link-latest .link-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+          line-clamp: 2;
+  overflow: hidden;
+}
+
+/* ---------- Socials ---------- */
+
+.button-container { margin-top: 28px; }
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.icon-button {
+  --c: 9px;
+  position: relative;
+  isolation: isolate;
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--edge);
+  clip-path: polygon(var(--c) 0, 100% 0, 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, 0 100%, 0 var(--c));
+  color: var(--fg);
+  font-size: 20px;
+}
+.icon-button::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: var(--plate);
+  clip-path: inherit;
+  transition: background 0.16s ease, inset 0.16s ease;
+}
+.icon-button:hover,
+.icon-button:focus-visible { background: var(--edge-hover); color: var(--accent-bright); outline: none; }
+.icon-button:focus-visible::before { inset: 3px; }
+
+/* ---------- Footer ---------- */
+
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  font-family: var(--condensed);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.footer a { border-bottom: 1px solid currentColor; }
+.footer a:hover { color: var(--fg); }
+.copyright { margin-top: 10px; font-size: 13px; letter-spacing: 0.12em; opacity: 0.85; }
+
+/* ---------- Larger screens ---------- */
+
+@media (min-width: 640px) {
+  body { padding-top: 64px; }
+  .links { gap: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
